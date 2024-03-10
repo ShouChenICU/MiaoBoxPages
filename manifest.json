@@ -1,0 +1,31 @@
+{
+  "id": "miaobox",
+  "name": "喵盒",
+  "short_name": "喵盒",
+  "description": "一个可以离线使用的在线工具箱",
+  "start_url": "/",
+  "scope": "/",
+  "categories": ["developer", "developer tools"],
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/favicon.webp",
+      "type": "image/webp",
+      "sizes": "512x512"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/twi.webp",
+      "type": "image/webp",
+      "sizes": "1920x1080",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshot2.webp",
+      "type": "image/webp",
+      "sizes": "648x1302",
+      "form_factor": "narrow"
+    }
+  ]
+}

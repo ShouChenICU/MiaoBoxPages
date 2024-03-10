@@ -1,0 +1,8 @@
+/assets/index-BjSrSMxG.css
+/assets/index-CbQsYWBw.js
+/favicon.webp
+/index.html
+/manifest.json
+/screenshot2.webp
+/twi.webp
+/
