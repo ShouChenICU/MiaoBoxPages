@@ -1,4 +1,4 @@
 {
-  "id": "0.1.16-Release",
-  "description": "1、修复一些样式问题"
+  "id": "0.1.17-Release",
+  "description": "1、新增RC4加解密工具"
 }
