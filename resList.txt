@@ -1,5 +1,5 @@
 /assets/index-BjSrSMxG.css
-/assets/index-CbQsYWBw.js
+/assets/index-BNpvm7bm.js
 /favicon.webp
 /index.html
 /manifest.json
