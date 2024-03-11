@@ -1,5 +1,7 @@
-/assets/index-BRVPUHNh.js
+/assets/CryptoJs-DtoIO9EQ.js
 /assets/index-CUarmeyR.css
+/assets/index-DvgHby_b.js
+/assets/vue-DTY-WmcC.js
 /favicon.webp
 /index.html
 /manifest.json

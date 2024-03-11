@@ -8,7 +8,7 @@ function postMsg(msg) {
   })
 }
 
-async function upgrade() {
+async function upgrade(msgType) {
   console.time('upgrade')
   console.log('Upgrade start')
   // 拉取最新资源列表
@@ -45,7 +45,7 @@ async function upgrade() {
   console.log('Upgrade done')
   console.timeEnd('upgrade')
 
-  postMsg({ type: 'UPGRADE_DONE' })
+  postMsg({ type: msgType })
 }
 
 self.addEventListener('fetch', (event) => {
@@ -72,12 +72,16 @@ self.addEventListener('fetch', (event) => {
 })
 
 self.addEventListener('install', async () => {
-  await upgrade()
   self.skipWaiting()
+  upgrade('INSTALL')
+})
+
+self.addEventListener('activate', () => {
+  console.log('activate')
 })
 
 self.addEventListener('message', (e) => {
   if (e.data.type === 'UPGRADE') {
-    upgrade()
+    upgrade('UPGRADE_DONE')
   }
 })
