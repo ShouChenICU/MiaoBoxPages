@@ -1,4 +1,4 @@
 {
-  "id": "0.1.17-Release",
-  "description": "1、新增RC4加解密工具"
+  "id": "0.1.18-R",
+  "description": "1、新增Base64和Hex互转工具\n2、优化部分工具的样式"
 }
