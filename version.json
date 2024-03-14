@@ -1,4 +1,4 @@
 {
-  "id": "0.1.20-R",
-  "description": "1、新增Rabbit加解密工具\n2、新增URI编解码工具\n3、我的收藏新增搜索功能"
+  "id": "0.1.21-R",
+  "description": "1、优化交互体验，现在支持返回到上一级\n2、新增WebSocket工具"
 }

@@ -1,6 +1,6 @@
 /assets/CryptoJs-DtoIO9EQ.js
-/assets/index-DPOkEZpM.js
-/assets/index-DPtZxg7f.css
+/assets/index-Bd8zKQ0x.js
+/assets/index-BqNY9_B2.css
 /assets/vue-DTY-WmcC.js
 /favicon.webp
 /index.html
