@@ -1,9 +1,10 @@
 /assets/CryptoJs-DtoIO9EQ.js
-/assets/index-Bd8zKQ0x.js
-/assets/index-BqNY9_B2.css
+/assets/index-BguIh-ml.js
+/assets/index-CaYaqTOC.css
 /assets/vue-DTY-WmcC.js
 /favicon.webp
 /index.html
+/knock.aac
 /manifest.json
 /screenshot2.webp
 /twi.webp
