@@ -1,6 +1,6 @@
-/assets/app-85yKTqNU.js
+/assets/app-BNq_kW74.js
 /assets/app-iZQbpHKI.css
-/assets/npm.export-CYRdsztA.js
+/assets/npm.export-CANmoWE3.js
 /banner.webp
 /favicon.webp
 /index.html
