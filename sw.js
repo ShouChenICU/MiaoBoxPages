@@ -55,6 +55,10 @@ function getResponseByCache(cacheName, request) {
       if (response) {
         return response
       }
+      if (cacheName !== 'main') {
+        // 如果不是主缓存，直接退出
+        return undefined
+      }
       // 否则尝试从网络中获取响应
       try {
         if (request.url.includes('/version.json')) {
