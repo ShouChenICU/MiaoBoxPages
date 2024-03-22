@@ -18,8 +18,8 @@
       "purpose": "any"
     },
     {
-      "src": "/favicon.svg",
-      "type": "image/svg+xml",
+      "src": "/favicon_maskable.webp",
+      "type": "image/webp",
       "sizes": "512x512",
       "purpose": "maskable"
     }

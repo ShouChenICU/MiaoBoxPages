@@ -2,6 +2,7 @@
 /assets/app-CJVhDrSD.css
 /assets/npm.export-DnFJWEu5.js
 /banner.webp
+/favicon_maskable.webp
 /favicon.svg
 /index.html
 /knock.mp3
