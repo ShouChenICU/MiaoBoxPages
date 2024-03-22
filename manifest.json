@@ -2,29 +2,39 @@
   "id": "miaobox",
   "name": "喵盒",
   "short_name": "喵盒",
-  "description": "一个可以离线使用的在线工具箱",
+  "description": "一个本地优先的实用工具箱",
   "start_url": "/",
   "scope": "/",
   "categories": ["developer", "developer tools"],
   "display": "standalone",
+  "display_override": ["standalone"],
+  "background_color": "#ffffff",
+  "theme_color": "#58B2DC",
   "icons": [
     {
-      "src": "/favicon.webp",
-      "type": "image/webp",
-      "sizes": "512x512"
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "maskable"
     }
   ],
   "screenshots": [
     {
-      "src": "/twi.webp",
+      "src": "/miaobox.webp",
       "type": "image/webp",
       "sizes": "1920x1080",
       "form_factor": "wide"
     },
     {
-      "src": "/screenshot2.webp",
+      "src": "/screenshot_mobile.webp",
       "type": "image/webp",
-      "sizes": "648x1302",
+      "sizes": "598x1104",
       "form_factor": "narrow"
     }
   ]

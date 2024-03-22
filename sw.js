@@ -48,32 +48,40 @@ async function upgrade(msgType) {
   postMsg({ type: msgType })
 }
 
+function getResponseByCache(cacheName, request) {
+  return caches.open(cacheName).then((mainCache) =>
+    mainCache.match(request).then((response) => {
+      // 如果在缓存中找到匹配的响应，则直接返回
+      if (response) {
+        return response
+      }
+      // 否则尝试从网络中获取响应
+      try {
+        if (request.url.includes('/version.json')) {
+          // 检查版本请求不走缓存
+          return fetch(request, { cache: 'no-store' })
+        }
+        return fetch(request)
+      } catch (e) {
+        console.warn(e)
+      }
+    })
+  )
+}
+
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.open('main').then((mainCache) =>
-      mainCache.match(event.request).then((response) => {
-        // 如果在缓存中找到匹配的响应，则直接返回
-        if (response) {
-          return response
-        }
-        // 否则尝试从网络中获取响应
-        try {
-          if (event.request.url.includes('/version.json')) {
-            // 检查版本请求不走缓存
-            return fetch(event.request, { cache: 'no-store' })
-          }
-          return fetch(event.request)
-        } catch (e) {
-          console.warn(e)
-        }
-      })
+    getResponseByCache('custom', event.request).then((res) =>
+      res ? res : getResponseByCache('main', event.request)
     )
   )
 })
 
 self.addEventListener('install', async () => {
   self.skipWaiting()
-  upgrade('INSTALL')
+  if (!(await caches.open('setting').then((c) => c.match('/localVersion')))) {
+    upgrade('INSTALL')
+  }
 })
 
 self.addEventListener('activate', () => {
