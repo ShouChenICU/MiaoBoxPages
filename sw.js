@@ -8,44 +8,54 @@ function postMsg(msg) {
   })
 }
 
+let isUpgrading = false
+
 async function upgrade(msgType) {
-  console.time('upgrade')
-  console.log('Upgrade start')
-  // 拉取最新资源列表
-  let resList = (await (await fetch('/resList.txt', { cache: 'no-store' })).text()).split('\n')
+  if (isUpgrading) {
+    return
+  }
+  isUpgrading = true
+  try {
+    console.time('upgrade')
+    console.log('Upgrade start')
+    // 拉取最新资源列表
+    let resList = (await (await fetch('/resList.txt', { cache: 'no-store' })).text()).split('\n')
 
-  // 清空临时缓存
-  await caches.delete('tmp')
-  let tmpCache = await caches.open('tmp')
+    // 清空临时缓存
+    await caches.delete('tmp')
+    let tmpCache = await caches.open('tmp')
 
-  // 拉取所有资源
-  for (let url of resList) {
-    if (url.trim() !== '') {
-      await tmpCache.put(url, await fetch(url, { cache: 'no-store' }))
+    // 拉取所有资源
+    for (let url of resList) {
+      if (url.trim() !== '') {
+        await tmpCache.put(url, await fetch(url, { cache: 'no-store' }))
+      }
     }
+
+    // 清空主缓存
+    await caches.delete('main')
+    let mainCache = await caches.open('main')
+
+    // 转移临时缓存到主缓存
+    let keys = await (await caches.open('tmp')).keys()
+    for (let req of keys) {
+      mainCache.put(req, await tmpCache.match(req))
+    }
+
+    // 删除临时缓存
+    await caches.delete('tmp')
+
+    // 更新本地版本
+    await (
+      await caches.open('setting')
+    ).put('/localVersion', await fetch('/version.json', { cache: 'no-store' }))
+    console.log('Upgrade done')
+    console.timeEnd('upgrade')
+
+    postMsg({ type: msgType })
+  } finally {
+    isUpgrading = false
   }
-
-  // 清空主缓存
-  await caches.delete('main')
-  let mainCache = await caches.open('main')
-
-  // 转移临时缓存到主缓存
-  let keys = await (await caches.open('tmp')).keys()
-  for (let req of keys) {
-    mainCache.put(req, await tmpCache.match(req))
-  }
-
-  // 删除临时缓存
-  await caches.delete('tmp')
-
-  // 更新本地版本
-  await (
-    await caches.open('setting')
-  ).put('/localVersion', await fetch('/version.json', { cache: 'no-store' }))
-  console.log('Upgrade done')
-  console.timeEnd('upgrade')
-
-  postMsg({ type: msgType })
 }
 
 function getResponseByCache(cacheName, request) {
@@ -84,6 +94,7 @@ self.addEventListener('fetch', (event) => {
 self.addEventListener('install', async () => {
   self.skipWaiting()
   if (!(await caches.open('setting').then((c) => c.match('/localVersion')))) {
+    postMsg({ type: 'START_INSTALL' })
     upgrade('INSTALL')
   }
 })
