@@ -1,10 +1,10 @@
-/assets/app-CWxrkzDk.js
-/assets/app-VSk2b4tV.css
+/assets/app-C0j7IWVZ.css
+/assets/app-COnpffrf.js
 /assets/materialdesignicons-webfont-B7mPwVP_.ttf
 /assets/materialdesignicons-webfont-CSr8KVlo.eot
 /assets/materialdesignicons-webfont-Dp5v-WZN.woff2
 /assets/materialdesignicons-webfont-PXm3-2wK.woff
-/assets/npm.export-CbP9quIf.js
+/assets/npm.export-DxM-eGJ6.js
 /banner.webp
 /favicon_maskable.webp
 /favicon.svg
